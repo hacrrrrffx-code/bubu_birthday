@@ -11,13 +11,13 @@ import OpeningAnimation from './components/OpeningAnimation'
 
 const App = () => {
 
-  // ------------------ 30-Minute Real-time Countdown State
-  const [timeLeft, setTimeLeft] = useState({ hours: '00', minutes: '30', seconds: '00' });
+  // ------------------ 14 Sep 12 AM Real-time Countdown State
+  const [timeLeft, setTimeLeft] = useState({ hours: '00', minutes: '00', seconds: '00' });
   const [isTimeUp, setIsTimeUp] = useState(false);
 
   useEffect(() => {
-    // Current time se exact 30 minutes aage ka target date
-    const targetDate = new Date().getTime() + 30 * 60 * 1000;
+    // Target Date: 14 September 2026, 00:00:00 (Raat 12 Baje)
+    const targetDate = new Date("September 14, 2026 00:00:00").getTime();
 
     const updateTimer = () => {
       const now = new Date().getTime();
@@ -38,7 +38,7 @@ const App = () => {
       }
     };
 
-    updateTimer(); // Initial call
+    updateTimer(); // Initial run
     const timer = setInterval(updateTimer, 1000);
 
     return () => clearInterval(timer);
@@ -72,7 +72,7 @@ const App = () => {
   }, [isTimeUp]);
 
 
-  // 1. 30 Minutes poore hone tak live timer screen dikhegi
+  // 1. Live 12 AM Countdown Screen
   if (!isTimeUp) {
     return (
       <div style={{
@@ -115,7 +115,7 @@ const App = () => {
   }
 
 
-  // 2. Timer 0 hote hi Opening Animation start ho jayega
+  // 2. Raat 12 AM hote hi main surprise project start ho jayega
   return (
     <>
       {
@@ -128,7 +128,7 @@ const App = () => {
   )
 }
 
-// Visual Design for Timer Cards
+// Visual Styles for Timer Cards
 const timerBoxStyle = {
   background: '#fff',
   padding: '15px 18px',
